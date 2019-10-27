@@ -1,6 +1,6 @@
 {
   "name": "@vipzhichengfork/node-readability",
-  "version": "3.0.1",
+  "version": "1.0.0",
   "author": "Zihua Li",
   "description": "Turning any web page into a clean view.",
   "homepage": "https://github.com/luin/node-readability",
@@ -12,7 +12,8 @@
     "readability": "./src/cli.js"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R spec",
+    "postversion": "git push && git push --tags"
   },
   "main": "./src/readability",
   "licenses": [
