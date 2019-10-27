@@ -4,6 +4,10 @@ Turn any web page into a clean view. This module is based on arc90's readability
 
 [![Build Status](https://travis-ci.org/luin/readability.png?branch=master)](https://travis-ci.org/luin/readability)
 
+**CAUION**
+
+This package is a fork of [node-readability](https://www.npmjs.com/package/node-readability), I just fork it to update old dependencies and do a little fix, maybe later i will drop it to use the original, if the original getting better. 
+
 ## Features
 1. Optimized for more websites.
 2. Supporting HTML5 tags (`article`, `section`) and Microdata API.

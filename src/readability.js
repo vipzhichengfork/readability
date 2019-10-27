@@ -60,7 +60,15 @@ Readability.prototype.getContent = function(notDeprecated) {
   }
 
   var articleContent = helpers.grabArticle(this._document);
-  if (helpers.getInnerText(articleContent, false) === '') {
+  var innerText = helpers.getInnerText(articleContent, false)
+  
+  try {
+    if (typeof JSON.parse(innerText) == 'object') {
+      innerText = ''
+    }
+  } catch (e) {}
+
+  if (innerText === '') {
     this._document.body.innerHTML = this.cache.body;
     articleContent = helpers.grabArticle(this._document, true);
     if (helpers.getInnerText(articleContent, false) === '') {
@@ -251,36 +259,38 @@ function read(html, options, callback) {
 
     if (typeof body !== 'string') body = body.toString();
     if (!body) return callback(new Error('Empty story body returned from URL'));
-    jsdom.env({
-      html: body,
-      done: function(errors, window) {
-        if (meta) {
-          window.document.originalURL = meta.request.uri.href;
-        } else {
-          window.document.originalURL = null;
-        }
 
-        if (errors) {
-          window.close();
-          return callback(errors);
-        }
-        if (!window.document.body) {
-          window.close();
-          return callback(new Error('No body tag was found.'));
-        }
+    const { JSDOM } = jsdom
+    const dom = new JSDOM(body, {
+      contentType: "text/html"
+    })
+    const window = dom.window
 
-        try {
-          var readability = new Readability(window, options);
+    if (meta) {
+      window.document.originalURL = meta.request.uri.href;
+    } else {
+      window.document.originalURL = null;
+    }
 
-          // add meta information to callback
-          callback(null, readability, meta);
-        } catch (ex) {
-          window.close();
-          return callback(ex);
+    // if (errors) {
+    //   window.close();
+    //   return callback(errors);
+    // }
+    if (!window.document.body) {
+      window.close();
+      return callback(new Error('No body tag was found.'));
+    }
 
-        }
-      }
-    });
+    try {
+      var readability = new Readability(window, options);
+
+      // add meta information to callback
+      callback(null, readability, meta);
+    } catch (ex) {
+      window.close();
+      return callback(ex);
+
+    }
   }
 }
 

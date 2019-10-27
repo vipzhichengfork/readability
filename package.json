@@ -1,5 +1,5 @@
 {
-  "name": "node-readability",
+  "name": "@vipzhichengfork/node-readability",
   "version": "3.0.0",
   "author": "Zihua Li",
   "description": "Turning any web page into a clean view.",
@@ -22,10 +22,10 @@
     }
   ],
   "dependencies": {
-    "encoding": "~0.1.7",
-    "jsdom": "^9.12.0",
+    "encoding": "~0.1.12",
+    "jsdom": "^15.2.0",
     "minimist": "^1.2.0",
-    "request": "^2.81.0"
+    "request": "^2.88.0"
   },
   "engines": {
     "node": ">= 2"
@@ -34,10 +34,10 @@
     "readability"
   ],
   "devDependencies": {
-    "cz-conventional-changelog": "^1.1.5",
-    "mocha": "~1.8.2",
-    "nock": "~0.27.1",
-    "should": "~2.1.1"
+    "cz-conventional-changelog": "^3.0.2",
+    "mocha": "~6.2.2",
+    "nock": "~11.6.0",
+    "should": "~13.2.3"
   },
   "config": {
     "commitizen": {
