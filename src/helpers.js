@@ -478,11 +478,11 @@ function cleanConditionally(e, tag) {
         toRemove = true;
       } else if (input > Math.floor(p / 3)) {
         toRemove = true;
-      } else if (contentLength < 25 && (img == 0 || img > 2)) {
+      } else if (contentLength < 5 && (img == 0 || img > 2)) {
         toRemove = true;
-      } else if (weight < 25 && linkDensity > .2) {
+      } else if (weight < 25 && linkDensity > .2 && tag !== 'ul') {
         toRemove = true;
-      } else if (weight >= 25 && linkDensity > .5) {
+      } else if (weight >= 25 && linkDensity > .5 && tag !== 'ul') {
         toRemove = true;
       } else if ((embedCount == 1 && contentLength < 75) || embedCount > 1) {
         toRemove = true;
