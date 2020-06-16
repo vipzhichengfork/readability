@@ -11,6 +11,7 @@ exports.debug = function(debug) {
 exports.debug(false);
 
 function Readability(window, options) {
+  this.options = options
   this._window = window;
   this._document = window.document;
   this.iframeLoads = 0;
@@ -59,7 +60,7 @@ Readability.prototype.getContent = function(notDeprecated) {
     return this.cache['article-content'];
   }
 
-  var articleContent = helpers.grabArticle(this._document, options.preserveUnlikelyCandidates ? true : false);
+  var articleContent = helpers.grabArticle(this._document, this.options.preserveUnlikelyCandidates ? true : false);
   var innerText = helpers.getInnerText(articleContent, false)
   
   try {
