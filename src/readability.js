@@ -59,7 +59,7 @@ Readability.prototype.getContent = function(notDeprecated) {
     return this.cache['article-content'];
   }
 
-  var articleContent = helpers.grabArticle(this._document);
+  var articleContent = helpers.grabArticle(this._document, options.preserveUnlikelyCandidates ? true : false);
   var innerText = helpers.getInnerText(articleContent, false)
   
   try {
