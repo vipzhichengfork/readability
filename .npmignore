@@ -1,1 +1,7 @@
 test
+bin/release.sh
+examples/simple.js
+examples/after.png
+examples/before.png
+.travis.yml
+CHANGELOG.md
